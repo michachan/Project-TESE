@@ -57,6 +57,9 @@ jobs:
       - name: Uncompress build folder
         run: tar -zxvf node-app.tar.gz
 
+      - name: Delete archive
+        run: rm node-app.tar.gz
+
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2

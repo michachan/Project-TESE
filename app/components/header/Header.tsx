@@ -6,7 +6,7 @@ import { PiGlobe } from 'react-icons/pi';
 
 export default function Header() {
   return (
-    <Flex h="52px" bg="white" justify="space-between" align="center" px="1em">
+    <Flex h="52px" bg="white" justify="space-between" align="center" px="1.3em">
       <Box h="0.8em">
         <Link href="#">
           <svg
