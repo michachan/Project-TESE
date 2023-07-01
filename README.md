@@ -1,3 +1,5 @@
+[![Build and deploy to Azure](https://github.com/michachan/Project-TESE/actions/workflows/main_projecttese.yml/badge.svg)](https://github.com/michachan/Project-TESE/actions/workflows/main_projecttese.yml) [![codecov](https://codecov.io/gh/michachan/Project-TESE/branch/main/graph/badge.svg?token=AYOUR63WTB)](https://codecov.io/gh/michachan/Project-TESE)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
