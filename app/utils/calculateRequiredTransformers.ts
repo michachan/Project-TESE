@@ -4,27 +4,32 @@ import {
   PRODUCTS,
 } from './constants';
 
-export const calculateRequiredTransformers = (
+export const parseItemCounts = (
   data: Record<PRODUCT_NAMES, number> | Record<string, unknown>
 ) => {
-  const batteryCounts = Object.entries(data).filter(
-    (
-      entry
-    ): entry is [Exclude<PRODUCT_NAMES, PRODUCT_NAMES.TRANSFORMER>, number] => {
-      const [name, value] = entry;
-
-      return (
-        name in PRODUCTS &&
-        typeof value === 'number' &&
-        name !== PRODUCT_NAMES.TRANSFORMER &&
-        value > 0
-      );
+  const itemCounts = Object.entries(data).filter(
+    (entry): entry is [PRODUCT_NAMES, number] => {
+      return entry[0] in PRODUCTS;
     }
   );
 
-  const totalBatteries = batteryCounts.reduce((acc: number, currentValue) => {
-    return (acc += currentValue[1]);
-  }, 0);
+  return itemCounts;
+};
 
-  return Math.floor(totalBatteries % BATTERY_TO_TRANSFORMER_RATIO);
+export const calculateRequiredTransformers = (
+  data: Record<PRODUCT_NAMES, number> | Record<string, unknown>
+) => {
+  const batteryCount = parseItemCounts(data).filter(
+    (
+      entry
+    ): entry is [Exclude<PRODUCT_NAMES, PRODUCT_NAMES.TRANSFORMER>, number] =>
+      entry[0] !== PRODUCT_NAMES.TRANSFORMER
+  );
+
+  const totalBatteries = batteryCount.reduce(
+    (acc: number, currentValue) => (acc += currentValue[1]),
+    0
+  );
+
+  return Math.floor(totalBatteries / BATTERY_TO_TRANSFORMER_RATIO);
 };

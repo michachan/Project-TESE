@@ -1,13 +1,9 @@
-import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import {
-  IconButton,
-  Input,
   NumberDecrementStepper,
   NumberIncrementStepper,
   NumberInput,
   NumberInputField,
   NumberInputStepper,
-  Text,
 } from '@chakra-ui/react';
 import { MouseEventHandler } from 'react';
 
