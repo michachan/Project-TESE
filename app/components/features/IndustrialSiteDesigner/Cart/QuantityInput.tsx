@@ -11,7 +11,9 @@ import {
 } from '@chakra-ui/react';
 import { MouseEventHandler } from 'react';
 
-export const Test = () => {
+type QuantityInputProps = { isDisabled?: boolean; min?: number };
+
+export const QuantityInput = ({ isDisabled, min }: QuantityInputProps) => {
   const onClickHandler: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
   };
@@ -21,11 +23,12 @@ export const Test = () => {
       size="sm"
       maxW={16}
       defaultValue={15}
-      min={0}
+      min={min ?? 0}
       onClick={onClickHandler}
       variant="outline"
       border="1px solid #b3b3b3"
       borderRadius={3}
+      isDisabled={isDisabled}
     >
       <NumberInputField fontWeight="bold" border={0} />
       <NumberInputStepper>

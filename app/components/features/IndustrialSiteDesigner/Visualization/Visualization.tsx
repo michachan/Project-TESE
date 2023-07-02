@@ -37,22 +37,5 @@ export const Visualization = () => {
         </Stack>
       </Box>
     </VStack>
-    // <Container py={{ base: '12', md: '16' }}>
-    //   <Stack spacing="16">
-    //     <Tabs size="sm" variant="indicator">
-    //       <TabList>
-    //         <Tab>Home</Tab>
-    //         <Tab>Components</Tab>
-    //         <Tab>Pricing</Tab>
-    //       </TabList>
-    //       <TabIndicator />
-    //       <TabPanels>
-    //         <TabPanel>grid</TabPanel>
-    //         <TabPanel>grid2</TabPanel>
-    //         <TabPanel>grid3</TabPanel>
-    //       </TabPanels>
-    //     </Tabs>
-    //   </Stack>
-    // </Container>
   );
 };

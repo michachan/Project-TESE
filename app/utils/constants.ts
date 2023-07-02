@@ -1,6 +1,6 @@
 export type Product = {
   name: PRODUCT_NAMES;
-  releaseYear: string;
+  releaseYear?: number;
   dimensions: {
     length: number;
     width: number;
@@ -25,7 +25,7 @@ export const enum PRODUCT_NAMES {
 export const PRODUCTS: Record<PRODUCT_NAMES, Product> = {
   [PRODUCT_NAMES.MEGAPACK_2XL]: {
     name: PRODUCT_NAMES.MEGAPACK_2XL,
-    releaseYear: '2022',
+    releaseYear: 2022,
     dimensions: {
       length: 40,
       width: 10,
@@ -35,7 +35,7 @@ export const PRODUCTS: Record<PRODUCT_NAMES, Product> = {
   },
   [PRODUCT_NAMES.MEGAPACK_2]: {
     name: PRODUCT_NAMES.MEGAPACK_2,
-    releaseYear: '2021',
+    releaseYear: 2021,
     dimensions: {
       length: 30,
       width: 10,
@@ -45,7 +45,7 @@ export const PRODUCTS: Record<PRODUCT_NAMES, Product> = {
   },
   [PRODUCT_NAMES.MEGAPACK]: {
     name: PRODUCT_NAMES.MEGAPACK,
-    releaseYear: '2005',
+    releaseYear: 2005,
     dimensions: {
       length: 30,
       width: 10,
@@ -55,7 +55,7 @@ export const PRODUCTS: Record<PRODUCT_NAMES, Product> = {
   },
   [PRODUCT_NAMES.POWERPACK]: {
     name: PRODUCT_NAMES.POWERPACK,
-    releaseYear: '2000',
+    releaseYear: 2000,
     dimensions: {
       length: 10,
       width: 10,
@@ -65,7 +65,6 @@ export const PRODUCTS: Record<PRODUCT_NAMES, Product> = {
   },
   [PRODUCT_NAMES.TRANSFORMER]: {
     name: PRODUCT_NAMES.TRANSFORMER,
-    releaseYear: '-',
     dimensions: {
       length: 10,
       width: 10,

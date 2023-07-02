@@ -15,7 +15,7 @@ import {
 
 import { Product, PRODUCT_NAMES } from '@/app/utils/constants';
 
-import { Test } from '../Cart/Test';
+import { QuantityInput } from '../Cart/QuantityInput';
 
 type ProductCardProps = { product: Product };
 
@@ -35,7 +35,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               {product.name}
             </Text>
             <Flex gap={3} mr={4}>
-              <Test />
+              <QuantityInput />
             </Flex>
           </Flex>
           <AccordionIcon />
@@ -50,6 +50,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                   Name
                 </Td>
                 <Td w={200}>{product.name}</Td>
+                <Td isNumeric>-</Td>
+              </Tr>
+              <Tr>
+                <Td w={0} fontWeight={500}>
+                  Year
+                </Td>
+                <Td w={200}>{product.releaseYear ?? '-'}</Td>
                 <Td isNumeric>-</Td>
               </Tr>
               <Tr>

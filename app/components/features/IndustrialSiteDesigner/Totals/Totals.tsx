@@ -1,10 +1,8 @@
 import {
-  Divider,
   Flex,
   Heading,
   HStack,
   Table,
-  TableCaption,
   TableContainer,
   Tbody,
   Td,
@@ -72,7 +70,7 @@ export const Totals = () => {
               <Td textAlign="right">$40,000</Td>
             </Tr>
           </Tbody>
-          <Tfoot borderTop="1px solid gray">
+          <Tfoot borderTop="1px solid #d0d1d2">
             <Tr fontWeight="semibold">
               <Td>Your Site Build</Td>
               <Td>50 MWh</Td>
