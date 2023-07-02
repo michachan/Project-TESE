@@ -1,6 +1,7 @@
 'use client';
 
 import {
+  Box,
   Container,
   Flex,
   Heading,
@@ -18,14 +19,14 @@ export const Visualization = () => {
   return (
     <VStack justifyContent="center">
       <Heading fontSize="2xl" fontWeight={500}>
-        Preview
+        Preview Selection
       </Heading>
-      <Container>
+      <Box w="100%">
         <Stack spacing="16">
           <Tabs size="md" variant="indicator" alignSelf="center" w="100%">
             <TabList>
-              <Tab flex="1">2D Preview</Tab>
-              <Tab flex="1">3D Preview</Tab>
+              <Tab flex="1">Preview in 2D</Tab>
+              <Tab flex="1">Preview in 3D</Tab>
             </TabList>
             <TabIndicator />
             <TabPanels>
@@ -34,7 +35,7 @@ export const Visualization = () => {
             </TabPanels>
           </Tabs>
         </Stack>
-      </Container>
+      </Box>
     </VStack>
     // <Container py={{ base: '12', md: '16' }}>
     //   <Stack spacing="16">

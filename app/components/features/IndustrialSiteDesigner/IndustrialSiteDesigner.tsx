@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Card, Flex } from '@chakra-ui/react';
+import { Box, Button, Card, Flex } from '@chakra-ui/react';
 import { Suspense } from 'react';
 
 import { IndustrialSiteDesignerCart, IndustrialSiteDesignerHero } from './';
@@ -22,7 +22,7 @@ export function IndustrialSiteDesigner() {
             px={3}
           >
             <Box flex={{ lg: '0 0 400px' }} h="100%">
-              <Card>
+              <Card position="sticky" top={3}>
                 <IndustrialSiteDesignerCart />
               </Card>
             </Box>
@@ -32,6 +32,14 @@ export function IndustrialSiteDesigner() {
               </Card>
               <Card p={4}>
                 <Visualization />
+                <Button
+                  variant="outline"
+                  borderWidth={3}
+                  _hover={{ bg: 'black', color: 'white', border: 'inherit' }}
+                  transitionDuration="0.4s"
+                >
+                  Order with Card
+                </Button>
               </Card>
             </Flex>
           </Flex>

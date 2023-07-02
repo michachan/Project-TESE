@@ -20,7 +20,7 @@ export const Totals = () => {
   return (
     <Flex bg="white" flexDir="column">
       <Heading fontWeight={500} fontSize="2xl" p={3} alignSelf="center">
-        Site Specifications
+        Selection Details
       </Heading>
 
       <HStack justify="center" gap={40} mt={3}>
