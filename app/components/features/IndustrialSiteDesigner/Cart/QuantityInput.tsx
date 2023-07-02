@@ -35,7 +35,9 @@ export const QuantityInput = ({
       border="1px solid #b3b3b3"
       borderRadius={3}
       isDisabled={isDisabled}
-      onChange={(_, val) => handleUpdateCart(val)}
+      onChange={(_, val) => {
+        handleUpdateCart(val ? val : 0);
+      }}
     >
       <NumberInputField fontWeight="bold" border={0} />
       <NumberInputStepper>
