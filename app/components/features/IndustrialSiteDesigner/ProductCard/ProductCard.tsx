@@ -15,6 +15,7 @@ import {
 
 import { useStore } from '@/app/lib/store';
 import { Product } from '@/app/utils/constants';
+import { calculateRequiredSpace } from '@/app/utils/productConversions';
 
 import { QuantityInput } from '../Cart/QuantityInput';
 
@@ -74,10 +75,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 <Td>
                   {product.dimensions.length}FT x {product.dimensions.width}FT
                 </Td>
-                <Td isNumeric>
-                  {product.dimensions.length * Math.ceil(itemCount / 10)}FT x{' '}
-                  {product.dimensions.width * Math.min(itemCount, 10)}FT
-                </Td>
+                <Td isNumeric>{calculateRequiredSpace(product, itemCount)}</Td>
               </Tr>
               <Tr>
                 <Td fontWeight={500}>Input</Td>
