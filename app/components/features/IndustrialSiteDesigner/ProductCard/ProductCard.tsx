@@ -13,20 +13,30 @@ import {
   Tr,
 } from '@chakra-ui/react';
 
-import { Product, PRODUCT_NAMES } from '@/app/utils/constants';
+import { useStore } from '@/app/lib/store';
+import { Product } from '@/app/utils/constants';
 
 import { QuantityInput } from '../Cart/QuantityInput';
 
 type ProductCardProps = { product: Product };
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const [itemCount, updateCart] = useStore((state) => [
+    state[product.name],
+    state.updateCart,
+  ]);
+
+  const handleUpdateCart = (value: number) => {
+    updateCart(product.name, value);
+  };
+
   return (
     <AccordionItem>
       <h2>
         <AccordionButton _hover={{ bg: 'whiteAlpha.600' }}>
           <Flex
             as="span"
-            flex="1"
+            flex={1}
             textAlign="left"
             justify="space-between"
             align="center"
@@ -35,7 +45,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               {product.name}
             </Text>
             <Flex gap={3} mr={4}>
-              <QuantityInput />
+              <QuantityInput handleUpdateCart={handleUpdateCart} />
             </Flex>
           </Flex>
           <AccordionIcon />
@@ -64,22 +74,27 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 <Td>
                   {product.dimensions.length}FT x {product.dimensions.width}FT
                 </Td>
-                <Td isNumeric>800SQFT</Td>
+                <Td isNumeric>
+                  {product.dimensions.length * Math.ceil(itemCount / 10)}FT x{' '}
+                  {product.dimensions.width * Math.min(itemCount, 10)}FT
+                </Td>
               </Tr>
               <Tr>
                 <Td fontWeight={500}>Input</Td>
-                <Td>2</Td>
-                <Td isNumeric>2</Td>
+                <Td>{itemCount}</Td>
+                <Td isNumeric>{itemCount}</Td>
               </Tr>
               <Tr>
                 <Td fontWeight={500}>Energy</Td>
                 <Td>{product.energy} MWH</Td>
-                <Td isNumeric>8.4MWH</Td>
+                <Td isNumeric>{product.energy * itemCount} MWH</Td>
               </Tr>
               <Tr>
                 <Td fontWeight={500}>Cost</Td>
                 <Td>${product.cost.toLocaleString()}</Td>
-                <Td isNumeric>$40,000</Td>
+                <Td isNumeric>
+                  ${(product.cost * itemCount).toLocaleString()}
+                </Td>
               </Tr>
             </Tbody>
           </Table>
