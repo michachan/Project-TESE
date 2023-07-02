@@ -1,4 +1,4 @@
-type Product = {
+export type Product = {
   name: PRODUCT_NAMES;
   releaseYear: string;
   dimensions: {
