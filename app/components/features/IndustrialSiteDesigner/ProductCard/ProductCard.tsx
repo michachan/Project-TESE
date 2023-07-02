@@ -3,6 +3,7 @@ import {
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
+  Badge,
   Button,
   Flex,
   Table,
@@ -53,7 +54,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <Text fontWeight={500} fontSize="lg">
               {product.name}
             </Text>
-            <Flex gap={3} mr={4}>
+            <Flex gap={3} mr={4} justifySelf="flex-end">
               <QuantityInput
                 value={itemCount}
                 handleUpdateCart={handleUpdateCart}
@@ -73,14 +74,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                   Name
                 </Td>
                 <Td w={200}>{product.name}</Td>
-                <Td isNumeric>-</Td>
+                <Td isNumeric textAlign="right"></Td>
               </Tr>
               <Tr>
                 <Td w={0} fontWeight={500}>
                   Year
                 </Td>
                 <Td w={200}>{product.releaseYear ?? '-'}</Td>
-                <Td isNumeric>-</Td>
+                <Td></Td>
               </Tr>
               <Tr>
                 <Td fontWeight={500}>Size</Td>
@@ -88,21 +89,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                   {formatRequiredSpace(calculateRequiredSpace(product, 1))}
                 </Td>
                 <Td isNumeric>
-                  {formatRequiredSpace(
-                    calculateRequiredSpace(product, itemCount)
-                  )}
+                  {itemCount
+                    ? formatRequiredSpace(
+                        calculateRequiredSpace(product, itemCount)
+                      )
+                    : '-'}
                 </Td>
-              </Tr>
-              <Tr>
-                <Td fontWeight={500}>Input</Td>
-                <Td>{itemCount.toLocaleString()}</Td>
-                <Td isNumeric>{itemCount.toLocaleString()}</Td>
               </Tr>
               <Tr>
                 <Td fontWeight={500}>Energy</Td>
                 <Td>{product.energy.toLocaleString()} MWH</Td>
                 <Td isNumeric>
-                  {(product.energy * itemCount).toLocaleString()} MWH
+                  {itemCount
+                    ? `${(product.energy * itemCount).toLocaleString()} MWh`
+                    : '-'}
                 </Td>
               </Tr>
               <Tr>
@@ -115,10 +115,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             </Tbody>
           </Table>
         </TableContainer>
+
         <Flex justify="flex-end" gap={3}>
           <Button mt={4} bg="#3e6ae1" color="white" size="sm" fontSize="xs">
             View Details
           </Button>
+
           <Button
             mt={4}
             variant="ghost"

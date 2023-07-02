@@ -1,9 +1,9 @@
+import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import {
-  NumberDecrementStepper,
-  NumberIncrementStepper,
+  Flex,
+  IconButton,
   NumberInput,
   NumberInputField,
-  NumberInputStepper,
 } from '@chakra-ui/react';
 import { MouseEventHandler } from 'react';
 
@@ -16,34 +16,51 @@ type QuantityInputProps = {
 
 export const QuantityInput = ({
   value,
-  isDisabled,
   min,
   handleUpdateCart,
 }: QuantityInputProps) => {
-  const onClickHandler: MouseEventHandler<HTMLDivElement> = (e) => {
+  const stopPropagation: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
   };
 
   return (
-    <NumberInput
-      size="sm"
-      maxW={90}
-      value={value}
-      min={min ?? 0}
-      onClick={onClickHandler}
-      variant="outline"
-      border="1px solid #b3b3b3"
-      borderRadius={3}
-      isDisabled={isDisabled}
-      onChange={(_, val) => {
-        handleUpdateCart(val || 0);
-      }}
-    >
-      <NumberInputField fontWeight="bold" border={0} />
-      <NumberInputStepper>
-        <NumberIncrementStepper />
-        <NumberDecrementStepper />
-      </NumberInputStepper>
-    </NumberInput>
+    <Flex align="center" onClick={stopPropagation}>
+      <IconButton
+        aria-label="decrement count"
+        icon={<MinusIcon boxSize={3} />}
+        color="black"
+        size="xs"
+        _hover={{ bg: 'black', color: 'white' }}
+        isDisabled={!value}
+        onClick={() => handleUpdateCart(value - 1)}
+      />
+      <NumberInput
+        size="sm"
+        maxW={50}
+        value={value}
+        min={min ?? 0}
+        variant="outline"
+        border={0}
+        onChange={(_, val) => {
+          handleUpdateCart(val || 0);
+        }}
+      >
+        <NumberInputField
+          fontWeight="bold"
+          border={0}
+          padding={0}
+          justifyContent="center"
+          textAlign="center"
+        />
+      </NumberInput>
+      <IconButton
+        aria-label="increment count"
+        icon={<AddIcon boxSize={3} />}
+        color="black"
+        size="sm"
+        _hover={{ bg: 'black', color: 'white' }}
+        onClick={() => handleUpdateCart(value + 1)}
+      />
+    </Flex>
   );
 };
