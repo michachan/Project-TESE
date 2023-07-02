@@ -62,8 +62,14 @@ export const calculateRequiredTransformers = (
   );
 };
 
-export const calculateRequiredSpace = (product: Product, itemCount: number) => {
-  return `${product.dimensions.length * Math.ceil(itemCount / 10)}ft x ${
-    product.dimensions.width * Math.min(itemCount, 10)
-  }ft`;
+export const calculateRequiredSpace = (
+  product: Product,
+  itemCount: number,
+  excludeUnits?: boolean
+) => {
+  return `${product.dimensions.length * Math.ceil(itemCount / 10)}${
+    excludeUnits ? '' : 'ft'
+  } x ${product.dimensions.width * Math.min(itemCount, 10)}${
+    excludeUnits ? '' : 'ft'
+  }`;
 };

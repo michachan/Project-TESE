@@ -3,6 +3,7 @@ import {
   Heading,
   HStack,
   Table,
+  TableCaption,
   TableContainer,
   Tbody,
   Td,
@@ -15,7 +16,7 @@ import {
 } from '@chakra-ui/react';
 
 import { useStore } from '@/app/lib/store';
-import { PRODUCTS } from '@/app/utils/constants';
+import { PRODUCT_NAMES, PRODUCTS } from '@/app/utils/constants';
 import {
   calculateMWhAndCost,
   calculateRequiredSpace,
@@ -54,11 +55,14 @@ export const Totals = () => {
 
       <TableContainer w="100%" mt={5}>
         <Table variant="unstyled" size="sm">
+          <TableCaption>
+            * For every 4 industrial batteries bought 1 transformer is needed
+          </TableCaption>
           <Thead>
             <Tr>
               <Th w={200}>Product</Th>
               <Th w={150}>Energy</Th>
-              <Th>Land Dimension</Th>
+              <Th>Land Dimension (ft)</Th>
               <Th textAlign="right">Cost</Th>
             </Tr>
           </Thead>
@@ -71,9 +75,10 @@ export const Totals = () => {
                   <Tr key={productName}>
                     <Td>
                       {count} {productName}
+                      {productName === PRODUCT_NAMES.TRANSFORMER ? ' *' : ''}
                     </Td>
                     <Td>{count * product.energy} MWh</Td>
-                    <Td>{calculateRequiredSpace(product, count)}</Td>
+                    <Td>{calculateRequiredSpace(product, count, true)}</Td>
                     <Td textAlign="right">
                       ${(count * product.cost).toLocaleString()}
                     </Td>

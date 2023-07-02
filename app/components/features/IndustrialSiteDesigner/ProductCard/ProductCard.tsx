@@ -14,18 +14,25 @@ import {
 } from '@chakra-ui/react';
 
 import { useStore } from '@/app/lib/store';
-import { Product } from '@/app/utils/constants';
-import { calculateRequiredSpace } from '@/app/utils/productConversions';
+import { Product, PRODUCT_NAMES } from '@/app/utils/constants';
+import {
+  calculateRequiredSpace,
+  calculateRequiredTransformers,
+} from '@/app/utils/productConversions';
 
 import { QuantityInput } from '../Cart/QuantityInput';
 
 type ProductCardProps = { product: Product };
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const [itemCount, updateCart] = useStore((state) => [
+  const [itemCount, updateCart, state] = useStore((state) => [
     state[product.name],
     state.updateCart,
+    state,
   ]);
+
+  const isTransformer = product.name === PRODUCT_NAMES.TRANSFORMER;
+  const min = isTransformer ? calculateRequiredTransformers(state) : undefined;
 
   const handleUpdateCart = (value: number) => {
     updateCart(product.name, value);
@@ -46,7 +53,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               {product.name}
             </Text>
             <Flex gap={3} mr={4}>
-              <QuantityInput handleUpdateCart={handleUpdateCart} />
+              <QuantityInput handleUpdateCart={handleUpdateCart} min={min} />
             </Flex>
           </Flex>
           <AccordionIcon />
