@@ -8,12 +8,14 @@ import {
 import { MouseEventHandler } from 'react';
 
 type QuantityInputProps = {
+  value: number;
   isDisabled?: boolean;
   min?: number;
   handleUpdateCart: (value: number) => void;
 };
 
 export const QuantityInput = ({
+  value,
   isDisabled,
   min,
   handleUpdateCart,
@@ -26,7 +28,7 @@ export const QuantityInput = ({
     <NumberInput
       size="sm"
       maxW={16}
-      defaultValue={0}
+      value={value}
       min={min ?? 0}
       onClick={onClickHandler}
       variant="outline"

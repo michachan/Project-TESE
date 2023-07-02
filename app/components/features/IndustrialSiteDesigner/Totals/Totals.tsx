@@ -58,7 +58,7 @@ export const Totals = () => {
       <TableContainer w="100%" mt={5}>
         <Table variant="unstyled" size="sm">
           <TableCaption>
-            * For every 4 industrial batteries bought 1 transformer is needed
+            * For every 4 industrial batteries bought, 1 transformer is needed
           </TableCaption>
           <Thead>
             <Tr>

@@ -54,7 +54,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               {product.name}
             </Text>
             <Flex gap={3} mr={4}>
-              <QuantityInput handleUpdateCart={handleUpdateCart} min={min} />
+              <QuantityInput
+                value={itemCount}
+                handleUpdateCart={handleUpdateCart}
+                min={min}
+              />
             </Flex>
           </Flex>
           <AccordionIcon />
@@ -111,7 +115,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </TableContainer>
         <Flex justify="flex-end" gap={3}>
           <Button mt={4} bg="#3e6ae1" color="white" size="sm" fontSize="xs">
-            Change Property
+            View Details
           </Button>
           <Button
             mt={4}
@@ -121,6 +125,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             bg="#f4f4f4"
             border="1px solid gray"
             color="#3a3c42"
+            onClick={() => updateCart(product.name, 0)}
           >
             Clear Selection
           </Button>
