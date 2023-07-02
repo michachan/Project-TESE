@@ -95,13 +95,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               </Tr>
               <Tr>
                 <Td fontWeight={500}>Input</Td>
-                <Td>{itemCount}</Td>
-                <Td isNumeric>{itemCount}</Td>
+                <Td>{itemCount.toLocaleString()}</Td>
+                <Td isNumeric>{itemCount.toLocaleString()}</Td>
               </Tr>
               <Tr>
                 <Td fontWeight={500}>Energy</Td>
-                <Td>{product.energy} MWH</Td>
-                <Td isNumeric>{product.energy * itemCount} MWH</Td>
+                <Td>{product.energy.toLocaleString()} MWH</Td>
+                <Td isNumeric>
+                  {(product.energy * itemCount).toLocaleString()} MWH
+                </Td>
               </Tr>
               <Tr>
                 <Td fontWeight={500}>Cost</Td>

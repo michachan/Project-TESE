@@ -8,7 +8,7 @@ import { ProductCard } from '../ProductCard/ProductCard';
 export const IndustrialSiteDesignerCart = () => {
   return (
     <Suspense>
-      <Accordion bg="white" allowToggle>
+      <Accordion bg="white" allowToggle borderY="transparent">
         {Object.values(PRODUCTS).map((product) => (
           <ProductCard key={product.name} product={product} />
         ))}

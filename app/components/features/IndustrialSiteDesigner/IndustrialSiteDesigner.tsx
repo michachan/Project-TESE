@@ -22,7 +22,7 @@ export function IndustrialSiteDesigner() {
             px={3}
           >
             <Box flex={{ lg: '0 0 400px' }} h="100%">
-              <Card position="sticky" top={3}>
+              <Card position="sticky" top={3} px="5px">
                 <IndustrialSiteDesignerCart />
               </Card>
             </Box>

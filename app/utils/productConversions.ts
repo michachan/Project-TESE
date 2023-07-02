@@ -66,9 +66,9 @@ export const formatRequiredSpace = (
   requiredSpace: ReturnType<typeof calculateRequiredSpace>,
   excludeUnits = false
 ) => {
-  return `${requiredSpace.length}${excludeUnits ? '' : 'ft'} x ${
-    requiredSpace.width
-  }${excludeUnits ? '' : 'ft'}`;
+  return `${requiredSpace.length.toLocaleString()}${
+    excludeUnits ? '' : 'ft'
+  } x ${requiredSpace.width.toLocaleString()}${excludeUnits ? '' : 'ft'}`;
 };
 
 export const calculateSiteArea = (state: Store) => {

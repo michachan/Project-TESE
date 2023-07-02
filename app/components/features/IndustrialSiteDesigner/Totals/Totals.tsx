@@ -39,7 +39,7 @@ export const Totals = () => {
       <HStack justify="center" gap={40} mt={3}>
         <VStack gap={0}>
           <Text fontSize="3xl" fontWeight={500} lineHeight={10}>
-            {totalMWh} MWh
+            {totalMWh.toLocaleString()} MWh
           </Text>
           <Text fontSize="xs" color="#5c5e62">
             Energy
@@ -47,7 +47,7 @@ export const Totals = () => {
         </VStack>
         <VStack gap={0}>
           <Text fontSize="3xl" fontWeight={500} lineHeight={10}>
-            {calculateTotalBatteries(state)}
+            {calculateTotalBatteries(state).toLocaleString()}
           </Text>
           <Text fontSize="xs" color="#5c5e62">
             Batteries
@@ -76,10 +76,10 @@ export const Totals = () => {
                 return (
                   <Tr key={productName}>
                     <Td>
-                      {count} {productName}
+                      {count.toLocaleString()} {productName}
                       {productName === PRODUCT_NAMES.TRANSFORMER ? ' *' : ''}
                     </Td>
-                    <Td>{count * product.energy} MWh</Td>
+                    <Td>{(count * product.energy).toLocaleString()} MWh</Td>
                     <Td>
                       {formatRequiredSpace(
                         calculateRequiredSpace(product, count),
@@ -96,7 +96,7 @@ export const Totals = () => {
           <Tfoot borderTop="1px solid #d0d1d2">
             <Tr fontWeight="semibold">
               <Td>Your Site Build</Td>
-              <Td>{totalMWh} MWh</Td>
+              <Td>{totalMWh.toLocaleString()} MWh</Td>
               <Td>{formatRequiredSpace(calculateSiteArea(state))}</Td>
               <Td textAlign="right">${totalCost.toLocaleString()}</Td>
             </Tr>

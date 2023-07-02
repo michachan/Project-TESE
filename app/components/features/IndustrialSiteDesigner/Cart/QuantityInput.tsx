@@ -27,7 +27,7 @@ export const QuantityInput = ({
   return (
     <NumberInput
       size="sm"
-      maxW={16}
+      maxW={90}
       value={value}
       min={min ?? 0}
       onClick={onClickHandler}
@@ -36,7 +36,7 @@ export const QuantityInput = ({
       borderRadius={3}
       isDisabled={isDisabled}
       onChange={(_, val) => {
-        handleUpdateCart(val ? val : 0);
+        handleUpdateCart(val || 0);
       }}
     >
       <NumberInputField fontWeight="bold" border={0} />
