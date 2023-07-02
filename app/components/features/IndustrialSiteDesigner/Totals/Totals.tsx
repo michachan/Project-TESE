@@ -31,15 +31,15 @@ export const Totals = () => {
   const [totalMWh, totalCost] = calculateMWhAndCost(state);
 
   return (
-    <Flex bg="white" flexDir="column">
+    <Flex bg="white" flexDir="column" alignItems="center">
       <Heading fontWeight={500} fontSize="2xl" p={3} alignSelf="center">
         Selection Details
       </Heading>
 
-      <HStack justify="center" gap={40} mt={3}>
+      <HStack justify="space-between" mt={3} w="100%" maxW="320px">
         <VStack gap={0}>
           <Text fontSize="3xl" fontWeight={500} lineHeight={10}>
-            {totalMWh.toLocaleString()} MWh
+            {Math.round(totalMWh).toLocaleString()} MWh
           </Text>
           <Text fontSize="xs" color="#5c5e62">
             Energy
