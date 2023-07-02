@@ -16,7 +16,7 @@ type QuantityInputProps = {
 
 export const QuantityInput = ({
   value,
-  min,
+  min = 0,
   handleUpdateCart,
 }: QuantityInputProps) => {
   const stopPropagation: MouseEventHandler<HTMLDivElement> = (e) => {
@@ -31,7 +31,7 @@ export const QuantityInput = ({
         color="black"
         size="xs"
         _hover={{ bg: 'black', color: 'white' }}
-        isDisabled={!value}
+        isDisabled={value <= min}
         onClick={() => handleUpdateCart(value - 1)}
       />
       <NumberInput
