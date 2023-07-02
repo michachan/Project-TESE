@@ -18,8 +18,8 @@ import {
 
 export const Totals = () => {
   return (
-    <Flex bg="white" flexDir="column" p={4}>
-      <Heading as="h4" fontWeight={500} size="lg" p={3} alignSelf="center">
+    <Flex bg="white" flexDir="column">
+      <Heading fontWeight={500} fontSize="2xl" p={3} alignSelf="center">
         Site Specifications
       </Heading>
 

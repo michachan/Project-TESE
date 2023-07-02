@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Card, Flex } from '@chakra-ui/react';
 import { Suspense } from 'react';
 
 import { IndustrialSiteDesignerCart, IndustrialSiteDesignerHero } from './';
@@ -16,17 +16,23 @@ export function IndustrialSiteDesigner() {
           <Flex
             flexDir={{ base: 'column', lg: 'row' }}
             w="100%"
-            maxW="1120px"
+            maxW={1120}
             gap={4}
             my={3}
             px={3}
           >
             <Box flex={{ lg: '0 0 400px' }} h="100%">
-              <IndustrialSiteDesignerCart />
+              <Card>
+                <IndustrialSiteDesignerCart />
+              </Card>
             </Box>
             <Flex flex="1" flexDir="column" gap={2}>
-              <Totals />
-              <Visualization />
+              <Card p={4}>
+                <Totals />
+              </Card>
+              <Card p={4}>
+                <Visualization />
+              </Card>
             </Flex>
           </Flex>
         </Flex>
