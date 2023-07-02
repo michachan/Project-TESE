@@ -56,8 +56,8 @@ export const Totals = () => {
         <Table variant="unstyled" size="sm">
           <Thead>
             <Tr>
-              <Th>Product</Th>
-              <Th>Energy</Th>
+              <Th w={200}>Product</Th>
+              <Th w={150}>Energy</Th>
               <Th>Land Dimension</Th>
               <Th textAlign="right">Cost</Th>
             </Tr>
