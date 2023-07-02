@@ -73,3 +73,8 @@ export const PRODUCTS: Record<PRODUCT_NAMES, Product> = {
     cost: 10_000,
   },
 };
+
+/**
+ * The number of transformers required for every X batteries
+ */
+export const BATTERY_TO_TRANSFORMER_RATIO = 4;

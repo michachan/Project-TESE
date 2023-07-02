@@ -5,7 +5,7 @@ import { PRODUCT_NAMES } from '../utils/constants';
 type State = { [key in PRODUCT_NAMES]: number };
 
 type Action = {
-  updateCart: (product: keyof PRODUCT_NAMES, quantity: number) => void;
+  updateCart: (product: PRODUCT_NAMES, quantity: number) => void;
 };
 
 export const useStore = create<State & Action>((set) => ({
@@ -15,11 +15,6 @@ export const useStore = create<State & Action>((set) => ({
   [PRODUCT_NAMES.POWERPACK]: 0,
   [PRODUCT_NAMES.TRANSFORMER]: 0,
   updateCart: (product, quantity) => {
-    set((state) => {
-      cart: {
-        ...state.cart,
-        [product]: quantity,
-      },
-    });
+    set(() => ({ [product]: quantity }));
   },
 }));

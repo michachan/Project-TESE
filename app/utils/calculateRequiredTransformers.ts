@@ -1,4 +1,8 @@
-import { PRODUCT_NAMES, PRODUCTS } from './constants';
+import {
+  BATTERY_TO_TRANSFORMER_RATIO,
+  PRODUCT_NAMES,
+  PRODUCTS,
+} from './constants';
 
 export const calculateRequiredTransformers = (
   data: Record<PRODUCT_NAMES, number> | Record<string, unknown>
@@ -6,10 +10,7 @@ export const calculateRequiredTransformers = (
   const batteryCounts = Object.entries(data).filter(
     (
       entry
-    ): entry is [
-      Exclude<keyof typeof PRODUCTS, PRODUCT_NAMES.TRANSFORMER>,
-      number
-    ] => {
+    ): entry is [Exclude<PRODUCT_NAMES, PRODUCT_NAMES.TRANSFORMER>, number] => {
       const [name, value] = entry;
 
       return (
@@ -25,5 +26,5 @@ export const calculateRequiredTransformers = (
     return (acc += currentValue[1]);
   }, 0);
 
-  return totalBatteries;
+  return Math.floor(totalBatteries % BATTERY_TO_TRANSFORMER_RATIO);
 };
