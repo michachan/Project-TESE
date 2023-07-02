@@ -28,7 +28,7 @@ export const IndustrialSiteDesignerCart = () => {
       <Accordion allowMultiple bg="white">
         <AccordionItem>
           <h2>
-            <AccordionButton>
+            <AccordionButton _hover={{ bg: 'whiteAlpha.600' }}>
               <Flex
                 as="span"
                 flex="1"

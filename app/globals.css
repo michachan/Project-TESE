@@ -13,6 +13,8 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
+  display: flex;
+  flex-direction: column;
   background: linear-gradient(
       to bottom,
       transparent,
