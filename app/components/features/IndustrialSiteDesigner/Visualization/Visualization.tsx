@@ -15,12 +15,12 @@ import {
   VStack,
 } from '@chakra-ui/react';
 
+import { TeslaHeading } from '@/app/components/common/heading/Heading';
+
 export const Visualization = () => {
   return (
     <VStack justifyContent="center">
-      <Heading fontSize="2xl" fontWeight={500}>
-        Preview Selection
-      </Heading>
+      <TeslaHeading>Preview Selection</TeslaHeading>
       <Box w="100%">
         <Stack spacing="16">
           <Tabs size="md" variant="indicator" alignSelf="center" w="100%">

@@ -15,6 +15,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 
+import { TeslaHeading } from '@/app/components/common/heading/Heading';
 import { useStore } from '@/app/lib/store';
 import { PRODUCT_NAMES, PRODUCTS } from '@/app/utils/constants';
 import {
@@ -32,23 +33,24 @@ export const Totals = () => {
 
   return (
     <Flex bg="white" flexDir="column" alignItems="center">
-      <Heading fontWeight={500} fontSize="2xl" p={3} alignSelf="center">
+      {/* <Heading fontWeight={500} fontSize="2xl" p={3} alignSelf="center">
         Selection Details
-      </Heading>
+      </Heading> */}
+      <TeslaHeading>Selection Details</TeslaHeading>
 
       <HStack justify="space-between" mt={3} w="100%" maxW="320px">
         <VStack gap={0}>
-          <Text fontSize="3xl" fontWeight={500} lineHeight={10}>
+          <TeslaHeading color="#3a3c42">
             {Math.round(totalMWh).toLocaleString()} MWh
-          </Text>
+          </TeslaHeading>
           <Text fontSize="xs" color="#5c5e62">
             Energy
           </Text>
         </VStack>
         <VStack gap={0}>
-          <Text fontSize="3xl" fontWeight={500} lineHeight={10}>
+          <TeslaHeading color="#3a3c42">
             {calculateTotalBatteries(state).toLocaleString()}
-          </Text>
+          </TeslaHeading>
           <Text fontSize="xs" color="#5c5e62">
             Batteries
           </Text>
