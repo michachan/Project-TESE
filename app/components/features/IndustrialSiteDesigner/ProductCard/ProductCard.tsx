@@ -72,9 +72,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               </Tr>
               <Tr>
                 <Td fontWeight={500}>Size</Td>
-                <Td>
-                  {product.dimensions.length}FT x {product.dimensions.width}FT
-                </Td>
+                <Td>{calculateRequiredSpace(product, 1)}</Td>
                 <Td isNumeric>{calculateRequiredSpace(product, itemCount)}</Td>
               </Tr>
               <Tr>

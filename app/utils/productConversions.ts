@@ -63,7 +63,7 @@ export const calculateRequiredTransformers = (
 };
 
 export const calculateRequiredSpace = (product: Product, itemCount: number) => {
-  return `${product.dimensions.length * Math.ceil(itemCount / 10)}FT x ${
+  return `${product.dimensions.length * Math.ceil(itemCount / 10)}ft x ${
     product.dimensions.width * Math.min(itemCount, 10)
-  }FT`;
+  }ft`;
 };
