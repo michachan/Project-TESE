@@ -1,3 +1,4 @@
+import { Store } from '../lib/store';
 import {
   BATTERY_TO_TRANSFORMER_RATIO,
   Product,
@@ -5,9 +6,7 @@ import {
   PRODUCTS,
 } from './constants';
 
-export const parseItemCounts = (
-  data: Record<PRODUCT_NAMES, number> | Record<string, unknown>
-) => {
+export const parseItemCounts = (data: Store) => {
   const itemCounts = Object.entries(data).filter(
     (entry): entry is [PRODUCT_NAMES, number] => {
       return entry[0] in PRODUCTS;
@@ -17,9 +16,7 @@ export const parseItemCounts = (
   return itemCounts;
 };
 
-export const calculateMWhAndCost = (
-  data: Record<PRODUCT_NAMES, number> | Record<string, unknown>
-) => {
+export const calculateMWhAndCost = (data: Store) => {
   const itemCounts = parseItemCounts(data);
 
   return itemCounts.reduce(
@@ -36,9 +33,7 @@ export const calculateMWhAndCost = (
   );
 };
 
-export const calculateTotalBatteries = (
-  data: Record<PRODUCT_NAMES, number> | Record<string, unknown>
-) => {
+export const calculateTotalBatteries = (data: Store) => {
   const batteryCount = parseItemCounts(data).filter(
     (
       entry
@@ -54,22 +49,42 @@ export const calculateTotalBatteries = (
   return totalBatteries;
 };
 
-export const calculateRequiredTransformers = (
-  data: Record<PRODUCT_NAMES, number> | Record<string, unknown>
-) => {
+export const calculateRequiredTransformers = (data: Store) => {
   return Math.floor(
     calculateTotalBatteries(data) / BATTERY_TO_TRANSFORMER_RATIO
   );
 };
 
-export const calculateRequiredSpace = (
-  product: Product,
-  itemCount: number,
-  excludeUnits?: boolean
+export const calculateRequiredSpace = (product: Product, itemCount: number) => {
+  return {
+    length: product.dimensions.length * Math.ceil(itemCount / 10),
+    width: product.dimensions.width * Math.min(itemCount, 10),
+  };
+};
+
+export const formatRequiredSpace = (
+  requiredSpace: ReturnType<typeof calculateRequiredSpace>,
+  excludeUnits = false
 ) => {
-  return `${product.dimensions.length * Math.ceil(itemCount / 10)}${
-    excludeUnits ? '' : 'ft'
-  } x ${product.dimensions.width * Math.min(itemCount, 10)}${
-    excludeUnits ? '' : 'ft'
-  }`;
+  return `${requiredSpace.length}${excludeUnits ? '' : 'ft'} x ${
+    requiredSpace.width
+  }${excludeUnits ? '' : 'ft'}`;
+};
+
+export const calculateSiteArea = (state: Store) => {
+  const items = parseItemCounts(state);
+
+  const spaceForAllProducts = items.map((item) => {
+    const [name, count] = item;
+    const product = PRODUCTS[name];
+    return calculateRequiredSpace(product, count);
+  });
+
+  const widthMax = Math.max(...spaceForAllProducts.map((item) => item.width));
+  const lengthSum = spaceForAllProducts.reduce(
+    (acc, currentValue) => (acc += currentValue.length),
+    0
+  );
+
+  return { length: lengthSum, width: widthMax };
 };

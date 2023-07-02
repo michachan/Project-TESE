@@ -8,7 +8,9 @@ type Action = {
   updateCart: (product: PRODUCT_NAMES, quantity: number) => void;
 };
 
-export const useStore = create<State & Action>((set) => ({
+export type Store = State & Action;
+
+export const useStore = create<Store>((set) => ({
   [PRODUCT_NAMES.MEGAPACK_2XL]: 0,
   [PRODUCT_NAMES.MEGAPACK_2]: 0,
   [PRODUCT_NAMES.MEGAPACK]: 0,

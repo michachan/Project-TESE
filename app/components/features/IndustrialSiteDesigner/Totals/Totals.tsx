@@ -20,7 +20,9 @@ import { PRODUCT_NAMES, PRODUCTS } from '@/app/utils/constants';
 import {
   calculateMWhAndCost,
   calculateRequiredSpace,
+  calculateSiteArea,
   calculateTotalBatteries,
+  formatRequiredSpace,
   parseItemCounts,
 } from '@/app/utils/productConversions';
 
@@ -78,7 +80,12 @@ export const Totals = () => {
                       {productName === PRODUCT_NAMES.TRANSFORMER ? ' *' : ''}
                     </Td>
                     <Td>{count * product.energy} MWh</Td>
-                    <Td>{calculateRequiredSpace(product, count, true)}</Td>
+                    <Td>
+                      {formatRequiredSpace(
+                        calculateRequiredSpace(product, count),
+                        true
+                      )}
+                    </Td>
                     <Td textAlign="right">
                       ${(count * product.cost).toLocaleString()}
                     </Td>
@@ -90,7 +97,7 @@ export const Totals = () => {
             <Tr fontWeight="semibold">
               <Td>Your Site Build</Td>
               <Td>{totalMWh} MWh</Td>
-              <Td>20 x 20</Td>
+              <Td>{formatRequiredSpace(calculateSiteArea(state))}</Td>
               <Td textAlign="right">${totalCost.toLocaleString()}</Td>
             </Tr>
           </Tfoot>
