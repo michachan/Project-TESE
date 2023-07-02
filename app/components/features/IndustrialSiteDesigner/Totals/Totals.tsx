@@ -41,11 +41,7 @@ export const Totals = () => {
           </Text>
         </VStack>
       </HStack>
-      {/* Price: 200,000
-      <br />
-      LS: 200 x 200
-      <br />
-      E: 200 */}
+
       <TableContainer w="100%" mt={5}>
         <Table variant="unstyled" size="sm">
           <Thead>

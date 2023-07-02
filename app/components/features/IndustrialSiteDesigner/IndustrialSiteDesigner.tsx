@@ -1,10 +1,9 @@
 'use client';
 
-import { Box, Container, Flex } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import { Suspense } from 'react';
 
-import { IndustrialSiteDesignerCart } from './Cart';
-import { IndustrialSiteDesignerHero } from './Hero';
+import { IndustrialSiteDesignerCart, IndustrialSiteDesignerHero } from './';
 import { Totals } from './Totals';
 import { Visualization } from './Visualization';
 
@@ -19,7 +18,8 @@ export function IndustrialSiteDesigner() {
             w="100%"
             maxW="1120px"
             gap={4}
-            m={3}
+            my={3}
+            px={3}
           >
             <Box flex={{ lg: '0 0 400px' }} h="100%">
               <IndustrialSiteDesignerCart />
