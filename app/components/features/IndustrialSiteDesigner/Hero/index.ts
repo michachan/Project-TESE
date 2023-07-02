@@ -1,0 +1,1 @@
+export { IndustrialSiteDesignerHero } from './Hero';
