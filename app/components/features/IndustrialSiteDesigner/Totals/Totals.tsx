@@ -38,7 +38,7 @@ export const Totals = () => {
       </Heading> */}
       <TeslaHeading>Selection Details</TeslaHeading>
 
-      <HStack justify="space-between" mt={3} w="100%" maxW="320px">
+      <HStack justify="space-between" mt={3} w="80%" maxW="320px">
         <VStack gap={0}>
           <TeslaHeading color="#3a3c42">
             {Math.round(totalMWh).toLocaleString()} MWh
