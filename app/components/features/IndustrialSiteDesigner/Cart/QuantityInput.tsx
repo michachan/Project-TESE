@@ -21,6 +21,8 @@ export const QuantityInput = ({
   min = 0,
   handleUpdateCart,
 }: QuantityInputProps) => {
+  const MAX_VALUE = 999;
+
   const stopPropagation: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
   };
@@ -34,7 +36,7 @@ export const QuantityInput = ({
         color="black"
         size="xs"
         _hover={{ bg: 'black', color: 'white' }}
-        isDisabled={value <= min}
+        isDisabled={value <= min || value >= MAX_VALUE}
         onClick={() => value > min && handleUpdateCart(value - 1)}
       />
       <NumberInput
@@ -42,11 +44,11 @@ export const QuantityInput = ({
         maxW={50}
         value={value}
         min={min ?? 0}
-        max={999}
+        max={MAX_VALUE}
         variant="outline"
         border={0}
         onChange={(_, val) => {
-          handleUpdateCart(val || 0);
+          handleUpdateCart(Math.min(val || 0, MAX_VALUE));
         }}
       >
         <NumberInputField
@@ -64,7 +66,8 @@ export const QuantityInput = ({
         color="black"
         size="sm"
         _hover={{ bg: 'black', color: 'white' }}
-        onClick={() => handleUpdateCart(value + 1)}
+        isDisabled={value >= MAX_VALUE}
+        onClick={() => handleUpdateCart(Math.min(value + 1, MAX_VALUE))}
       />
     </Flex>
   );
