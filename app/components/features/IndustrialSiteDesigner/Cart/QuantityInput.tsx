@@ -25,6 +25,8 @@ export const QuantityInput = ({
     e.stopPropagation();
   };
 
+  console.log({ value, min });
+
   return (
     <Flex align="center" onClick={stopPropagation}>
       <IconButton
@@ -35,7 +37,7 @@ export const QuantityInput = ({
         size="xs"
         _hover={{ bg: 'black', color: 'white' }}
         isDisabled={value <= min}
-        onClick={() => handleUpdateCart(value - 1)}
+        onClick={() => value > min && handleUpdateCart(value - 1)}
       />
       <NumberInput
         size="sm"
