@@ -25,8 +25,6 @@ export const QuantityInput = ({
     e.stopPropagation();
   };
 
-  console.log({ value, min });
-
   return (
     <Flex align="center" onClick={stopPropagation}>
       <IconButton
