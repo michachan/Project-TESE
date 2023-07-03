@@ -17,6 +17,14 @@ export const enum PRODUCT_NAMES {
   TRANSFORMER = 'Transformer',
 }
 
+export const COLOR_MAP: Record<PRODUCT_NAMES, string> = {
+  [PRODUCT_NAMES.MEGAPACK_2XL]: '#FF0000',
+  [PRODUCT_NAMES.MEGAPACK_2]: '#FFA500',
+  [PRODUCT_NAMES.MEGAPACK]: '#FFFF00',
+  [PRODUCT_NAMES.POWERPACK]: '#00FF00',
+  [PRODUCT_NAMES.TRANSFORMER]: '#0000FF',
+};
+
 /**
  * Dimensions in feet
  * Energy in MWh

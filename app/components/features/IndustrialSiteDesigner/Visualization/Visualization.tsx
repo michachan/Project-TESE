@@ -16,6 +16,9 @@ import {
 } from '@chakra-ui/react';
 
 import { TeslaHeading } from '@/app/components/common/heading/Heading';
+import { useStore } from '@/app/lib/store';
+
+import { SvgVisualization } from './SvgVisualization';
 
 export const Visualization = () => {
   return (
@@ -30,7 +33,9 @@ export const Visualization = () => {
             </TabList>
             <TabIndicator />
             <TabPanels>
-              <TabPanel>2D Preview</TabPanel>
+              <TabPanel>
+                <SvgVisualization />
+              </TabPanel>
               <TabPanel>3D Preview</TabPanel>
             </TabPanels>
           </Tabs>
