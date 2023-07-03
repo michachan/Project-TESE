@@ -17,6 +17,7 @@ import {
 import { TeslaHeading } from '@/app/components/common/heading/Heading';
 import { useStore } from '@/app/lib/store';
 import { PRODUCT_NAMES, PRODUCTS } from '@/app/utils/constants';
+import { greedyBalancing } from '@/app/utils/greedyBalancing';
 import {
   calculateMWhAndCost,
   calculateRequiredSpace,
@@ -29,6 +30,7 @@ import {
 export const Totals = () => {
   const state = useStore();
   const [totalMWh, totalCost] = calculateMWhAndCost(state);
+  const itemCount = parseItemCounts(state);
 
   return (
     <Flex bg="white" flexDir="column" alignItems="center">
@@ -95,7 +97,12 @@ export const Totals = () => {
             <Tr fontWeight="semibold">
               <Td>Your Site Build</Td>
               <Td>{totalMWh.toLocaleString()} MWh</Td>
-              <Td>{formatRequiredSpace(calculateSiteArea(state))}</Td>
+              <Td>
+                {formatRequiredSpace({
+                  length: greedyBalancing(state, 10, 100).maxLength,
+                  width: Math.min(100, calculateSiteArea(state).width),
+                })}
+              </Td>
               <Td textAlign="right">${totalCost.toLocaleString()}</Td>
             </Tr>
           </Tfoot>
