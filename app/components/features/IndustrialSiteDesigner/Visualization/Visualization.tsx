@@ -14,6 +14,7 @@ import {
 
 import { TeslaHeading } from '@/app/components/common/heading/Heading';
 
+import { CanvasVisualization } from './CanvasVisualization';
 import { SvgVisualization } from './SvgVisualization';
 
 export const Visualization = () => {
@@ -32,7 +33,9 @@ export const Visualization = () => {
               <TabPanel overflowY="scroll">
                 <SvgVisualization />
               </TabPanel>
-              <TabPanel>3D Preview</TabPanel>
+              <TabPanel>
+                <CanvasVisualization />
+              </TabPanel>
             </TabPanels>
           </Tabs>
         </Stack>
