@@ -1,3 +1,5 @@
+'use client';
+
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import {
   Flex,
@@ -26,6 +28,7 @@ export const QuantityInput = ({
   return (
     <Flex align="center" onClick={stopPropagation}>
       <IconButton
+        as="span"
         aria-label="decrement count"
         icon={<MinusIcon boxSize={3} />}
         color="black"
@@ -54,6 +57,7 @@ export const QuantityInput = ({
         />
       </NumberInput>
       <IconButton
+        as="span"
         aria-label="increment count"
         icon={<AddIcon boxSize={3} />}
         color="black"

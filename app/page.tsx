@@ -1,7 +1,11 @@
-'use client';
+import { Suspense } from 'react';
 
 import { IndustrialSiteDesigner } from './components/features/IndustrialSiteDesigner';
 
 export default function Home() {
-  return <IndustrialSiteDesigner />;
+  return (
+    <Suspense>
+      <IndustrialSiteDesigner />
+    </Suspense>
+  );
 }

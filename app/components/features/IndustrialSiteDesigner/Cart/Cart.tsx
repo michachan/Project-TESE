@@ -1,3 +1,5 @@
+'use client';
+
 import { Accordion } from '@chakra-ui/react';
 import { Suspense } from 'react';
 
