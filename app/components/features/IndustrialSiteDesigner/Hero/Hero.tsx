@@ -15,11 +15,12 @@ export const IndustrialSiteDesignerHero = () => {
         height={0}
         style={{
           display: 'block',
-          objectFit: 'cover',
+          objectFit: 'none',
+          objectPosition: '50% 52%',
           minWidth: '100%',
           maxWidth: '100%',
           height: '100%',
-          maxHeight: '430px',
+          maxHeight: '475px',
         }}
       />
     </Box>

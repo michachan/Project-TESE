@@ -10,7 +10,14 @@ export const Header = () => {
     <Box flex="1 0 42px" bg="white">
       <Flex justify="space-between" align="center" px="1.3em" w="100%" h="100%">
         <Link href="#">
-          <Image priority src="/logo.svg" alt="Logo" width={150} height={40} />
+          <Image
+            priority
+            src="/logo.svg"
+            alt="Logo"
+            width={150}
+            height={0}
+            style={{ objectFit: 'fill', height: 12 }}
+          />
         </Link>
 
         <Button
