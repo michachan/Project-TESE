@@ -17,10 +17,9 @@ export const drawChart = (state: Store, ref: MutableRefObject<null>) => {
   const marginRight = 20;
   const marginBottom = 30;
   const marginLeft = 40;
+  const rangeMax = Math.max(maxLength, 100) + 50;
 
   d3.select(ref.current).selectAll('*').remove();
-
-  const rangeMax = Math.max(maxLength, 100) + 50;
 
   const svg = d3
     .select(ref.current)
@@ -42,9 +41,9 @@ export const drawChart = (state: Store, ref: MutableRefObject<null>) => {
     .enter()
     .append('g')
     .append('rect')
-    .attr('x', (d) => d.plot.x * (width / d.dimensions.width))
+    .attr('x', (d) => d.plot.x * (width / d.dimensions.width) + 8)
     .attr('y', (d) => d.plot.y * (height / rangeMax))
-    .attr('width', 10 * (width / 100) - 8)
+    .attr('width', 10 * (width / 100) - 16)
     .attr('height', (d) => d.dimensions.length * (height / rangeMax))
     .attr('fill', (d) => d.plot.color)
     .style('border', '1px solid black');
