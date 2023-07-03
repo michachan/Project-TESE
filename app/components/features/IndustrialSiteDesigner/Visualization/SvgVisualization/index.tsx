@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react';
+import { Box, Container, Flex } from '@chakra-ui/react';
 import { throttle } from 'lodash';
 import { useLayoutEffect, useMemo, useRef } from 'react';
 
@@ -16,8 +16,8 @@ export function SvgVisualization() {
   }, [state, throttledDrawChart]);
 
   return (
-    <Flex w="0px">
+    <Box w="0">
       <div id="svg_target" ref={ref} />
-    </Flex>
+    </Box>
   );
 }

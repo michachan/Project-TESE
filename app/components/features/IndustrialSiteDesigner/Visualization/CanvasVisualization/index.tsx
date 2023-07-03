@@ -1,3 +1,4 @@
+import { Container } from '@chakra-ui/react';
 import { Canvas, ThreeElements, useFrame } from '@react-three/fiber';
 import { useRef, useState } from 'react';
 
@@ -23,11 +24,13 @@ function Box(props: ThreeElements['mesh']) {
 
 export const CanvasVisualization = () => {
   return (
-    <Canvas>
-      <ambientLight />
-      <pointLight position={[10, 10, 10]} />
-      <Box position={[-1.2, 0, 0]} />
-      <Box position={[1.2, 0, 0]} />
-    </Canvas>
+    <Container>
+      <Canvas>
+        <ambientLight />
+        <pointLight position={[10, 10, 10]} />
+        <Box position={[-1.2, 0, 0]} />
+        <Box position={[1.2, 0, 0]} />
+      </Canvas>
+    </Container>
   );
 };
