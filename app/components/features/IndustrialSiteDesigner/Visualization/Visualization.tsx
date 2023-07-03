@@ -2,9 +2,6 @@
 
 import {
   Box,
-  Container,
-  Flex,
-  Heading,
   Stack,
   Tab,
   TabIndicator,
@@ -16,7 +13,6 @@ import {
 } from '@chakra-ui/react';
 
 import { TeslaHeading } from '@/app/components/common/heading/Heading';
-import { useStore } from '@/app/lib/store';
 
 import { SvgVisualization } from './SvgVisualization';
 

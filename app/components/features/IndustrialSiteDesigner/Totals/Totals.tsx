@@ -1,6 +1,5 @@
 import {
   Flex,
-  Heading,
   HStack,
   Table,
   TableCaption,
@@ -33,9 +32,6 @@ export const Totals = () => {
 
   return (
     <Flex bg="white" flexDir="column" alignItems="center">
-      {/* <Heading fontWeight={500} fontSize="2xl" p={3} alignSelf="center">
-        Selection Details
-      </Heading> */}
       <TeslaHeading>Selection Details</TeslaHeading>
 
       <HStack justify="space-between" mt={3} w="80%" maxW="320px">

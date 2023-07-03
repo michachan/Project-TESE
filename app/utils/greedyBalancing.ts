@@ -1,6 +1,6 @@
 import { Store } from '../lib/store';
 import { COLOR_MAP, Product, PRODUCTS } from './constants';
-import { calculateRequiredSpace, parseItemCounts } from './productConversions';
+import { parseItemCounts } from './productConversions';
 
 /**
  * Places batteries in a greedy way, starting from the left bucket to the right
