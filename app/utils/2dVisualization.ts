@@ -20,6 +20,8 @@ export const drawChart = (state: Store, ref: MutableRefObject<null>) => {
 
   d3.select(ref.current).selectAll('*').remove();
 
+  const rangeMax = Math.max(maxLength, 100) + 50;
+
   const svg = d3
     .select(ref.current)
     .append('svg')
@@ -29,10 +31,7 @@ export const drawChart = (state: Store, ref: MutableRefObject<null>) => {
     .attr('transform', 'translate(' + marginLeft + ',' + marginTop + ')');
 
   const x = d3.scaleLinear().range([0, width]).domain([0, 100]);
-  const y = d3
-    .scaleLinear()
-    .range([height, 0])
-    .domain([Math.max(maxLength, 100), 0]);
+  const y = d3.scaleLinear().range([height, 0]).domain([rangeMax, 0]);
 
   const xAxis = d3.axisBottom(x);
   const yAxis = d3.axisLeft(y);
@@ -43,18 +42,10 @@ export const drawChart = (state: Store, ref: MutableRefObject<null>) => {
     .enter()
     .append('g')
     .append('rect')
-    .attr('x', (d) => {
-      console.log(d.plot.x);
-      return d.plot.x * 64;
-    })
-    .attr('y', (d) => {
-      console.log('d.plot.y');
-      console.log(d.plot.y);
-      return d.plot.y;
-    })
+    .attr('x', (d) => d.plot.x * (width / d.dimensions.width))
+    .attr('y', (d) => d.plot.y * (height / rangeMax))
     .attr('width', 10 * (width / 100) - 8)
-    .attr('height', (d) => d.dimensions.length * 1)
-    // .transition()
+    .attr('height', (d) => d.dimensions.length * (height / rangeMax))
     .attr('fill', (d) => d.plot.color)
     .style('border', '1px solid black');
 

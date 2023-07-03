@@ -38,8 +38,6 @@ export const greedyBalancing = (
     }
   });
 
-  const maxLength = Math.max(...bucketSums);
-
   const flattenedPlots = buckets.reduce(
     (
       acc: (Product & { plot: { x: number; y: number; color: string } })[],
@@ -62,5 +60,5 @@ export const greedyBalancing = (
     []
   );
 
-  return { maxLength, flattenedPlots };
+  return { maxLength: Math.max(...bucketSums), flattenedPlots };
 };
