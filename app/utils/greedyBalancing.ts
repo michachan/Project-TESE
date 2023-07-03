@@ -26,15 +26,15 @@ export const greedyBalancing = (
 
   items.forEach((item) => {
     const length = item.dimensions.length;
+    const minBucketIndex = bucketSums.findIndex(
+      (value) => value === Math.min(...bucketSums)
+    );
 
     for (let i = 0; i < item.count; i++) {
-      const minBucketIndex = bucketSums.findIndex(
-        (value) => value === Math.min(...bucketSums)
-      );
-
-      const minBucket = buckets[minBucketIndex];
+      const bucketIndex = (minBucketIndex + i) % numOfBuckets;
+      const minBucket = buckets[bucketIndex];
       minBucket.push(item);
-      bucketSums[minBucketIndex] += length;
+      bucketSums[bucketIndex] += length;
     }
   });
 
