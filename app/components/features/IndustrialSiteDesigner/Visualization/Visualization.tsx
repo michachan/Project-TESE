@@ -33,10 +33,10 @@ export const Visualization = () => {
             </TabList>
             <TabIndicator />
             <TabPanels>
-              <TabPanel>
+              <TabPanel overflowY="scroll">
                 <SvgVisualization />
               </TabPanel>
-              <TabPanel overflowY="scroll">3D Preview</TabPanel>
+              <TabPanel>3D Preview</TabPanel>
             </TabPanels>
           </Tabs>
         </Stack>
