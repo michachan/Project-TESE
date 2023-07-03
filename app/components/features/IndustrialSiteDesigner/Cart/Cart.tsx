@@ -12,7 +12,7 @@ export const IndustrialSiteDesignerCart = () => {
   return (
     <Suspense>
       <VStack align="center">
-        <TeslaHeading>Customize Your Site</TeslaHeading>
+        <TeslaHeading>Pick Your Devices</TeslaHeading>
       </VStack>
       <Accordion bg="white" allowToggle borderY="transparent">
         {Object.values(PRODUCTS).map((product) => (

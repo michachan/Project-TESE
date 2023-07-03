@@ -62,7 +62,5 @@ export const greedyBalancing = (
     []
   );
 
-  console.log({ flattenedPlots });
-
   return { maxLength, flattenedPlots };
 };
