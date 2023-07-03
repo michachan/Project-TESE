@@ -32,7 +32,7 @@ export const drawChart = (state: Store, ref: MutableRefObject<null>) => {
   const x = d3.scaleLinear().range([0, width]).domain([0, 100]);
   const y = d3.scaleLinear().range([height, 0]).domain([rangeMax, 0]);
 
-  const xAxis = d3.axisBottom(x);
+  const xAxis = d3.axisTop(x);
   const yAxis = d3.axisLeft(y);
 
   svg
@@ -41,11 +41,13 @@ export const drawChart = (state: Store, ref: MutableRefObject<null>) => {
     .enter()
     .append('g')
     .append('rect')
-    .attr('x', (d) => d.plot.x * (width / d.dimensions.width) + 8)
+    .attr('x', (d) => d.plot.x * (width / d.dimensions.width) + 4)
     .attr('y', (d) => d.plot.y * (height / rangeMax))
-    .attr('width', 10 * (width / 100) - 16)
+    .attr('width', 10 * (width / 100) - 8)
     .attr('height', (d) => d.dimensions.length * (height / rangeMax))
     .attr('fill', (d) => d.plot.color)
+    .style('stroke', 'black')
+    .style('stroke-width', 1)
     .style('border', '1px solid black');
 
   svg.append('g').call(xAxis);
