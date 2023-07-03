@@ -48,7 +48,7 @@ export const QuantityInput = ({
         variant="outline"
         border={0}
         onChange={(_, val) => {
-          handleUpdateCart(Math.min(Math.max(+val ?? 0, min), MAX_VALUE));
+          handleUpdateCart(Math.min(Math.max(+val || 0, min), MAX_VALUE));
         }}
       >
         <NumberInputField
