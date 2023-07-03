@@ -14,6 +14,7 @@ export const greedyBalancing = (
   siteWidth: number
 ) => {
   const numOfBuckets = Math.ceil(siteWidth / standardWidth);
+
   const items = parseItemCounts(state).map(([key, value]) => ({
     ...PRODUCTS[key],
     count: value,
@@ -24,15 +25,23 @@ export const greedyBalancing = (
   const bucketSums = Array.from({ length: numOfBuckets }, () => 0);
   const buckets: Product[][] = Array.from({ length: numOfBuckets }, () => []);
 
+  const findMinBucketIndex = () =>
+    bucketSums.findIndex((value) => value === Math.min(...bucketSums));
+
   items.forEach((item) => {
     const length = item.dimensions.length;
-    const minBucketIndex = bucketSums.findIndex(
-      (value) => value === Math.min(...bucketSums)
-    );
+    let minBucketIndex = findMinBucketIndex();
+    let offset = 0;
 
     for (let i = 0; i < item.count; i++) {
-      const bucketIndex = (minBucketIndex + i) % numOfBuckets;
+      const bucketIndex = (minBucketIndex + offset++) % numOfBuckets;
       const minBucket = buckets[bucketIndex];
+
+      if (bucketIndex + 1 === numOfBuckets) {
+        minBucketIndex = findMinBucketIndex();
+        offset = 0;
+      }
+
       minBucket.push(item);
       bucketSums[bucketIndex] += length;
     }
