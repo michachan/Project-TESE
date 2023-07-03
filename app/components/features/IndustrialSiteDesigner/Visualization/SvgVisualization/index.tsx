@@ -1,3 +1,4 @@
+import { Flex } from '@chakra-ui/react';
 import { throttle } from 'lodash';
 import { useLayoutEffect, useMemo, useRef } from 'react';
 
@@ -14,5 +15,9 @@ export function SvgVisualization() {
     throttledDrawChart(state, ref);
   }, [state, throttledDrawChart]);
 
-  return <div id="svg_target" ref={ref} />;
+  return (
+    <Flex w="0px">
+      <div id="svg_target" ref={ref} />
+    </Flex>
+  );
 }

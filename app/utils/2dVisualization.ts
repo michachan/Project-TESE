@@ -11,7 +11,7 @@ import { greedyBalancing } from './greedyBalancing';
 export const drawChart = (state: Store, ref: MutableRefObject<null>) => {
   const { maxLength, flattenedPlots } = greedyBalancing(state, 10, 100);
 
-  const width = 640;
+  const width = 550;
   const height = 400;
   const marginTop = 20;
   const marginRight = 20;
