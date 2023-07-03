@@ -13,7 +13,7 @@ export const greedyBalancing = (
   standardWidth: number,
   siteWidth: number
 ) => {
-  const numOfBuckets = Math.ceil(siteWidth / standardWidth);
+  const numOfBuckets = Math.floor(siteWidth / standardWidth);
 
   const items = parseItemCounts(state).map(([key, value]) => ({
     ...PRODUCTS[key],
@@ -34,16 +34,19 @@ export const greedyBalancing = (
     let offset = 0;
 
     for (let i = 0; i < item.count; i++) {
-      const bucketIndex = (minBucketIndex + offset++) % numOfBuckets;
+      const bucketIndex = minBucketIndex + offset++;
       const minBucket = buckets[bucketIndex];
-
-      if (bucketIndex + 1 === numOfBuckets) {
-        minBucketIndex = findMinBucketIndex();
-        offset = 0;
-      }
 
       minBucket.push(item);
       bucketSums[bucketIndex] += length;
+
+      // Rows are theoretically sorted from longest to shortest, left to right. Once we reach the end, we calculate
+      // the next max and start from there
+      // If we are at the last index of the row, find next min and change offset to 0
+      if (bucketIndex === numOfBuckets - 1) {
+        minBucketIndex = findMinBucketIndex();
+        offset = 0;
+      }
     }
   });
 
