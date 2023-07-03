@@ -44,6 +44,7 @@ export const QuantityInput = ({
         maxW={50}
         value={value}
         min={min ?? 0}
+        max={999}
         variant="outline"
         border={0}
         onChange={(_, val) => {
