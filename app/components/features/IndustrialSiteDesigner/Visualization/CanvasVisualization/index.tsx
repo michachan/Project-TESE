@@ -60,9 +60,8 @@ const Grid = ({ number = 23, lineWidth = 0.026, height = 0.5 }) => (
 );
 
 export const CanvasVisualization = () => {
-  const [data, setRenderedData] = useState([]);
   const state = useStore();
-  const { maxLength, flattenedPlots } = greedyBalancing(state, 10, 100);
+  const { flattenedPlots } = greedyBalancing(state, 10, 100);
 
   // const throttledCalculation = useMemo(() => throttle(drawChart, 1_500), []);
 
@@ -89,37 +88,26 @@ export const CanvasVisualization = () => {
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
 
-        {/* <Environment>
-          <Lightformer
-            form="rect" // circle | ring | rect (optional, default = rect)
-            intensity={1} // power level (optional = 1)
-            color="white" // (optional = white)
-            scale={1} // Scale it any way you prefer (optional = [1, 1])
-            target={[0, 0, 0]} // Target position (optional = undefined)
-          />
-        </Environment> */}
-        {/* <Environment preset="city" /> */}
-        {/* <Box position={[-1.2, 0, 0]} />
-        <Box position={[1.2, 0, 0]} /> */}
-        {/* <mesh>
-          <boxGeometry />
-          <meshStandardMaterial />
-        </mesh> */}
-        {/* <Environment scale={5}> */}
         {flattenedPlots.map((plot, index) => {
           console.log({ plot, index });
+          const scaledWidth = plot.dimensions.width / 10;
+          const scaledLength = plot.dimensions.length / 10;
+
+          console.log({
+            scaledWidth,
+            scaledLength,
+            x: plot.plot.x,
+            y: plot.plot.y,
+          });
+
           return (
             <Box
               key={index}
-              args={[
-                plot.dimensions.width / 10,
-                1,
-                plot.dimensions.length / 10,
-              ]}
+              args={[scaledWidth, 1, scaledLength]}
               position={[
-                plot.plot.x - (0.5 * plot.dimensions.width) / 10,
+                -plot.plot.x - scaledWidth / 2,
                 0.5,
-                plot.plot.y - (0.5 * plot.dimensions.length) / 10,
+                -plot.plot.y - scaledLength / 2,
               ]}
               material-color={plot.plot.color}
             />
