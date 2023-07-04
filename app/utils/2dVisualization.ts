@@ -2,14 +2,14 @@ import * as d3 from 'd3';
 import { MutableRefObject } from 'react';
 
 import { Store } from '../lib/store';
-import { greedyBalancing } from './greedyBalancing';
+import { balanceItemsGreedy } from './balanceItemsGreedy';
 
 /**
  * Inefficient
  * @param state
  */
 export const drawChart = (state: Store, ref: MutableRefObject<null>) => {
-  const { maxLength, flattenedPlots } = greedyBalancing(state, 10, 100);
+  const { maxLength, flattenedPlots } = balanceItemsGreedy(state, 10, 100);
 
   const width = 550;
   const height = 400;
