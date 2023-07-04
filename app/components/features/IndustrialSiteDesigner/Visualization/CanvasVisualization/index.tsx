@@ -1,16 +1,11 @@
 import { Container } from '@chakra-ui/react';
 import {
-  Box,
-  Environment,
   Instance,
   Instances,
-  Lightformer,
   OrbitControls,
   RoundedBox,
 } from '@react-three/drei';
-import { Canvas, ThreeElements, useFrame } from '@react-three/fiber';
-import { throttle } from 'lodash';
-import { useMemo, useRef, useState } from 'react';
+import { Canvas } from '@react-three/fiber';
 
 import { useStore } from '@/app/lib/store';
 import { greedyBalancing } from '@/app/utils/greedyBalancing';
@@ -38,7 +33,6 @@ import { greedyBalancing } from '@/app/utils/greedyBalancing';
 
 const Grid = ({ number = 23, lineWidth = 0.026, height = 0.5 }) => (
   // Renders a grid and crosses as instances
-  // <Instances position={[0, -1.02, 0]}>
   <Instances position={[0, 0, 0]}>
     <planeGeometry args={[lineWidth, height]} />
     <meshBasicMaterial color="#999" />
@@ -103,7 +97,7 @@ export const CanvasVisualization = () => {
 
           return (
             <RoundedBox
-              key={index}
+              key={`${plot.name}_${index}`}
               args={[scaledWidth - 0.2, 1, scaledLength - 0.2]}
               position={[
                 -plot.plot.x - scaledWidth / 2,

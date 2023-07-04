@@ -30,7 +30,6 @@ import {
 export const Totals = () => {
   const state = useStore();
   const [totalMWh, totalCost] = calculateMWhAndCost(state);
-  const itemCount = parseItemCounts(state);
 
   return (
     <Flex bg="white" flexDir="column" alignItems="center">
@@ -55,7 +54,7 @@ export const Totals = () => {
         </VStack>
       </HStack>
 
-      <TableContainer w="100%" mt={5}>
+      <TableContainer w="100%" mt={5} transition="height 0.5s linear">
         <Table variant="unstyled" size="sm">
           <TableCaption>
             * For every 4 industrial batteries bought, 1 transformer is needed
@@ -69,29 +68,33 @@ export const Totals = () => {
             </Tr>
           </Thead>
           <Tbody>
-            {parseItemCounts(state)
-              .filter((item) => item[1])
-              .map(([productName, count]) => {
-                const product = PRODUCTS[productName];
-                return (
-                  <Tr key={productName}>
-                    <Td>
-                      {count.toLocaleString()} {productName}
-                      {productName === PRODUCT_NAMES.TRANSFORMER ? ' *' : ''}
-                    </Td>
-                    <Td>{(count * product.energy).toLocaleString()} MWh</Td>
-                    <Td>
-                      {formatRequiredSpace(
-                        calculateRequiredSpace(product, count),
-                        true
-                      )}
-                    </Td>
-                    <Td textAlign="right">
-                      ${(count * product.cost).toLocaleString()}
-                    </Td>
-                  </Tr>
-                );
-              })}
+            {parseItemCounts(state).map(([productName, count]) => {
+              const product = PRODUCTS[productName];
+              return (
+                <Tr
+                  key={productName}
+                  h={count ? 'auto' : 0}
+                  opacity={count ? 1 : 0}
+                  visibility={count ? 'visible' : 'collapse'}
+                  transition="opacity 0.5s ease-in-out, visibility 0.5s linear"
+                >
+                  <Td>
+                    {count.toLocaleString()} {productName}
+                    {productName === PRODUCT_NAMES.TRANSFORMER ? ' *' : ''}
+                  </Td>
+                  <Td>{(count * product.energy).toLocaleString()} MWh</Td>
+                  <Td>
+                    {formatRequiredSpace(
+                      calculateRequiredSpace(product, count),
+                      true
+                    )}
+                  </Td>
+                  <Td textAlign="right">
+                    ${(count * product.cost).toLocaleString()}
+                  </Td>
+                </Tr>
+              );
+            })}
           </Tbody>
           <Tfoot borderTop="1px solid #d0d1d2">
             <Tr fontWeight="semibold">
