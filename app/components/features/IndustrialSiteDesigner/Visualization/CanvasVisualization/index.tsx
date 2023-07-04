@@ -111,8 +111,16 @@ export const CanvasVisualization = () => {
           return (
             <Box
               key={index}
-              args={[plot.dimensions.length, 1, plot.dimensions.width]}
-              position={[plot.plot.x, 0.5, plot.plot.y]}
+              args={[
+                plot.dimensions.width / 10,
+                1,
+                plot.dimensions.length / 10,
+              ]}
+              position={[
+                plot.plot.x - (0.5 * plot.dimensions.width) / 10,
+                0.5,
+                plot.plot.y - (0.5 * plot.dimensions.length) / 10,
+              ]}
               material-color={plot.plot.color}
             />
           );
