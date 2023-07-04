@@ -10,5 +10,10 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     css: true,
+    coverage: {
+      all: true,
+      include: ['app'],
+      exclude: ['**/__tests__/**', '*.d.ts'],
+    },
   },
 });

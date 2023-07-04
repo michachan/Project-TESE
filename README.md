@@ -88,7 +88,7 @@ Aligning with Tesla's Master Plan Part 3, this product will streamline users' ab
 
 - [x] Leverage new global state management into application (Zustand)
 - [x] Learn/implement simple D3 2D visualization
-- [ ] Learn/implement simple Three.js 3D visualization
+- [x] Learn/implement simple Three.js 3D visualization
 - [x] Bootstrap repo with opinions for TS, ESLint, CI/CD, testing, framework for future projects
 - [x] Have fun with algorithms!
 - [x] Bonus: speedrun without compromising on UX

@@ -47,7 +47,10 @@ export const greedyBalancing = (
       // Rows are theoretically sorted from longest to shortest, left to right. Once we reach the end, we calculate
       // the next max and start from there
       // If we are at the last index of the row, find next min and change offset to 0
-      if (bucketIndex === numOfBuckets - 1 || bucketIndex >= monotonicBreak) {
+      if (
+        bucketIndex === numOfBuckets - 1 ||
+        bucketIndex + 1 >= monotonicBreak
+      ) {
         monotonicBreak =
           monotonicBreak === -1 ? findMonotonicBreak(bucketSums) : -1;
         minBucketIndex = findMinBucketIndex();
