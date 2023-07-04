@@ -70,7 +70,7 @@ export const greedyBalancing = (
           plot: { x: index, y: rollingLength, color: COLOR_MAP[item.name] },
         });
 
-        rollingLength += item.dimensions.length;
+        rollingLength += item.dimensions.length / 10;
       });
 
       return acc;

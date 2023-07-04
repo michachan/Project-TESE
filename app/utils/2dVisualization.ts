@@ -42,7 +42,7 @@ export const drawChart = (state: Store, ref: MutableRefObject<null>) => {
     .append('g')
     .append('rect')
     .attr('x', (d) => d.plot.x * (width / d.dimensions.width) + 2)
-    .attr('y', (d) => d.plot.y * (height / rangeMax))
+    .attr('y', (d) => d.plot.y * 10 * (height / rangeMax))
     .attr('width', 10 * (width / 100) - 4)
     .attr('height', (d) => d.dimensions.length * (height / rangeMax))
     .attr('fill', (d) => d.plot.color)
