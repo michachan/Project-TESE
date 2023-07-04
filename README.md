@@ -64,11 +64,11 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <!-- <li><a href="#roadmap">Roadmap</a></li> -->
+    <!-- <li><a href="#contributing">Contributing</a></li> -->
+    <!-- <li><a href="#license">License</a></li> -->
+    <!-- <li><a href="#contact">Contact</a></li> -->
+    <!-- <li><a href="#acknowledgments">Acknowledgments</a></li> -->
   </ol>
 </details>
 
@@ -131,7 +131,7 @@ No fuss, no muss. Run `npm install && npm run dev` to run this application local
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-TODO: Add screenshots here
+![image](https://github.com/michachan/Project-TESE/assets/27760344/7773f6f0-0671-46c7-bb42-353a778152ce)
 
 <!-- _For more examples, please refer to the [Documentation](https://example.com)_ -->
 
