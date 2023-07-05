@@ -7,14 +7,14 @@ import { drawChart } from '@/app/utils/2dVisualization';
 import { TwoDimensionalVisualizationBase } from './2dVisualization.base';
 
 export const TwoDimensionalVisualizationContainer = () => {
-  const ref = useRef(null);
+  const targetRef = useRef(null);
   const state = useStore();
 
   const throttledDrawChart = useMemo(() => throttle(drawChart, 1_500), []);
 
   useLayoutEffect(() => {
-    throttledDrawChart(state, ref);
+    throttledDrawChart(state, targetRef);
   }, [state, throttledDrawChart]);
 
-  return <TwoDimensionalVisualizationBase ref={ref} />;
+  return <TwoDimensionalVisualizationBase ref={targetRef} />;
 };
